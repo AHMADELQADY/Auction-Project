@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120vh;
+  background: url('gavel-auction-hammer-justice-legal-judge.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+
+
+}
+
+/* Stile per l'header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+
+h1 {
+  font-size: 2em;
+  user-select: none;
+  background: transparent;
+  color: #fff;
+
+}
+
+
+
+.main-nav a {
+  position: relative;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.main-nav a::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .5s;
+}
+
+.main-nav a:hover::after{
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+
+.main-nav .btnLogout{
+
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: #fff;
+  font-weight: 500;
+  margin-left: 40px;
+}
+
+.main-nav .btnLogout:hover{
+  background-color: #fff;
+  color: #333;
+}
+/* Layout principale con Flexbox */
+.three-column-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100vh - 70px); /* Altezza totale meno l'altezza dell'header */
+  transition: all 0.8s ease-in-out;
+  width: 2000px;
+}
+
+/* Colonna sinistra */
+.column.left {
+  flex: 1;
+  max-width: 25%;
+  background-color: #f0f8ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100px;
+  overflow-y: auto;
+  background: transparent;
+}
+
+/* Pulsante blu nella colonna sinistra */
+.blue-button {
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.blue-button:hover {
+  background-color: #0056b3;
+}
+
+/* Colonna centrale */
+.column.center {
+  flex: 3;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+/* Tabella delle aste create */
+.auctions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.auctions-table th, .auctions-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.auctions-table th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
+
+.auctions-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.auctions-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Colonna destra nascosta inizialmente */
+.column.right {
+  flex: 0;
+  max-width: 25%;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease, flex 0.8s ease-in-out;
+}
+
+/* Mostra la colonna destra */
+.three-column-layout.show-right .column.right {
+  flex: 1;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.three-column-layout.show-right .column.center {
+  flex: 2;
+}
+
+/* Stile delle colonne */
+.column {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+/* User info */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.user-info .user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.user-info .user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.user-details p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Modulo nella colonna destra */
+.column.right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.column.right form label {
+  margin: 10px 0 5px;
+}
+
+.column.right form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.column.right form button {
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.column.right form button:hover {
+  background-color: #0056b3;
+}
+
+/* Stile del modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-header .search-container {
+  display: flex;
+  align-items: center;
+}
+
+.modal-header input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.modal-header .search-container .search-icon {
+  margin-left: 8px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.modal-content .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: red;
+}
+
+.user-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-list .auctions-won-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.user-list .auctions-won-button:hover {
+  background-color: #0056b3;
+}
+
+/* Stile per le aste vinte */
+.auctions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.auction-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 0 1 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+}
+
+.auction-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.auction-card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Tabella delle aste create */
+#created-auctions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #333;
+}
+
+#created-auctions-table th,
+#created-auctions-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#created-auctions-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  color: #333;
+}
+
+#created-auctions-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#created-auctions-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Pulsante per le azioni nella tabella */
+#created-auctions-table .action-button {
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#created-auctions-table .action-button:hover {
+  background-color: #0056b3;
+}
+
+.action-button.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-button.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Stile del modulo di creazione delle aste */
+.create-auction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.create-auction-form label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.create-auction-form input,
+.create-auction-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.create-auction-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.create-auction-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.create-auction-form button:hover {
+  background-color: #218838;
+}
+
+.create-auction-form .error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: -10px;
+}
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Auctions Profile</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <header>
+      <h1>My Auctions Profile</h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="auctions.html">Auctions List</a>
+        <a href="#" id="contact-link">Create Auction</a>
+        <a href="#" id="modify-auction-link">Modify Auction</a>
+        <button class="btnLogout">Logout</button>
+
+      </nav>
+  </header>
+
+  <main class="three-column-layout">
+    <section class="column left">
+      <div class="user-info">
+        <img src="User-avatar.svg.png" alt="User Icon" class="user-icon">
+        <div class="user-details">
+          <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+          <p><strong>Surname:</strong> <span id="user-surname">Loading...</span></p>
+          <p><strong>Username:</strong> <span id="user-username">Loading...</span></p>
+        </div>
+      </div>
+      <button id="show-users-button" class="blue-button">Show Users</button>
+    </section>
+
+    <section class="column center">
+      <h2>My Created Auctions</h2>
+      <table id="created-auctions-table" class="auctions-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Expiration Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aste caricate dinamicamente -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="column right hidden">
+      <h2>Create Auction</h2>
+      <form id="create-auction-form">
+        <label for="auction-title">Title:</label>
+        <input type="text" id="auction-title" name="title" placeholder="Enter auction title" required>
+
+        <label for="auction-description">Description:</label>
+        <textarea id="auction-description" name="description" placeholder="Enter auction description" required></textarea>
+
+        <label for="auction-expiration">Expiration Date:</label>
+        <input type="date" id="auction-expiration" name="expirationDate" required>
+
+        <label for="auction-price">Starting Price:</label>
+        <input type="number" id="auction-price" name="startingPrice" placeholder="Enter starting price" required min="0">
+
+        <button type="submit" class="blue-button">Create Auction</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="users-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>User List</h2>
+        <div class="search-container">
+          <input type="text" id="search-users" placeholder="Search users...">
+          <span class="search-icon">🔍</span>
+        </div>
+        <button class="close-button" id="close-users-modal">&times;</button>
+      </div>
+      <ul id="user-list" class="user-list">
+        <!-- Lista utenti caricata dinamicamente -->
+      </ul>
+    </div>
+  </div>
+
+  <div id="auctions-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Auctions Won</h2>
+        <button class="close-button" id="close-auctions-modal">&times;</button>
+      </div>
+      <div id="auctions-grid" class="auctions-grid">
+        <!-- Griglia delle aste vinte caricata dinamicamente -->
+      </div>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

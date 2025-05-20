@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equix="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h2 class="logo">Elqady Auction</h2>
+        <nav class="navigation">
+            <a href="auctions.html">Auction Search</a>
+            <button class="btnLogin-popup">Enter</button>
+        </nav>
+    </header>
+
+
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon>
+        </span>
+        <div class="form-box login">
+           <h2>Login</h2> 
+           <form action="/api/auth/signin" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="errorMessage" id="loginErrorMessage" style="color: red;"></p>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+           </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Registeration</h2> 
+            <form action="/api/auth/signup" method="POST">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="name" required>
+                    <label>Name</label>
+                </div>
+                 <div class="input-box">
+                     <span class="icon"><ion-icon name="person"></ion-icon></span>
+                     <input type="text" name="surname"  required>
+                     <label>Surname</label>
+                 </div>
+                 <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                 <div class="input-box">
+                     <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                     <input type="password" name="password"  required>
+                     <label>Password</label>
+                 </div>
+                 <button type="submit" class="btn">Register</button>
+                 <p class="errorMessage" id="registerErrorMessage" style="color: red;"></p>
+                 <div class="login-register">
+                     <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                 </div>
+            </form>
+         </div>     
+    </div>
+
+    
+    <div id="bestauctionsite">
+        <h1>WELCOME TO THE BEST AUCTION SITE</h1>
+    </div>
+    <div id="frase">
+        <p>
+            If you already have an account, log in to access exclusive auctions and start bidding. 
+            New here? Register now to join our community and participate in exciting auctions today!
+        </p>
+    </div>
+
+    
+
+    <script src= "index.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"defer></script>
+</body>
+</html>
+
+
+

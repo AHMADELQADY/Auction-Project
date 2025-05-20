@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auction List</title>
+  <link rel="stylesheet" href="auctions.css">
+  <script defer src="auctions.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Auction List</h1>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="profile.html">My Profile</a>
+
+    </nav>
+  </header>
+
+  <main>
+    <!-- Search Bar -->
+    <div class="search-container">
+      <label for="searchInput">🔍</label>
+      <input type="text" id="searchInput" placeholder="Enter keywords to search" />
+    </div>
+
+    <!-- Auction List -->
+    <section>
+      <h2 class="word" >All Auctions</h2>
+      <div id="auctionGrid" class="auction-grid">
+        <!-- Auction items will be dynamically populated here -->
+      </div>
+      <p id="errorMessage" class="error-message"></p>
+    </section>
+  </main>
+
+  <!-- Modal for Bidding -->
+  <div id="bidModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" id="closeBidModal">&times;</span>
+      <h2 id="modalTitle">Place Your Bid</h2>
+      <div id="modalDetails">
+        <!-- Auction details for bidding will be dynamically populated here -->
+      </div>
+      <form id="bidForm">
+        <input type="number" id="bidAmount" placeholder="Enter your bid" required />
+        <button type="submit" class="bid-submit-button">Place Bid</button>
+      </form>
+      <p id="modalErrorMessage" class="error-message"></p>
+    </div>
+  </div>
+
+  <!-- Modal for Auction Details -->
+  <div id="auctionDetailsModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" id="closeDetailsModal">&times;</span>
+      <h2 id="detailsModalTitle">Auction Details</h2>
+      <div id="auctionDetails">
+        <!-- Auction details will be dynamically populated here -->
+        <button id="bidsHistoryButton" class="bid-button">Bid History</button>
+        <div id="bidsHistoryDetails" class="bids-history">
+          <!-- Bid history will be dynamically populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Bid History -->
+  <div id="bidsHistoryModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" id="closeBidsHistoryModal">&times;</span>
+      <h2>Bid History</h2>
+      <div id="bidsHistoryContent" class="bids-history">
+        <div class="bids-history-grid">
+          <!-- Example Bid Item -->
+          <div class="bids-header"><strong>User</strong></div>
+          <div class="bids-header"><strong>Amount</strong></div>
+          <div class="bids-header"><strong>Date</strong></div>
+          <div class="bids-header"><strong>Action</strong></div>
+
+          <div class="bid-item">User1</div>
+          <div class="bid-item">$3000</div>
+          <div class="bid-item">1/16/2025, 11:02:11 AM</div>
+          <div class="bid-item"><button class="details-button" data-id="1">Details</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Bid Details -->
+  <div id="bidDetailsModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" id="closeBidDetailsModal">&times;</span>
+      <h2>Bid Details</h2>
+      <div id="bidDetailsContent">
+        <!-- Bid details will be dynamically populated here -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

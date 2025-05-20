@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('gavel-auction-hammer-justice-legal-judge.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+
+
+}
+
+/* Stile per l'header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+
+header h1 {
+  font-size: 2em;
+  user-select: none;
+  background: transparent;
+  color: #fff;
+}
+
+.main-nav a {
+  position: relative;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .5s;
+}
+
+.main-nav a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+/* Styling for the search input container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}
+
+.search-container label {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #fff;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.search-container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.search-container input::placeholder {
+  font-style: italic;
+  color: #aaa;
+}
+
+.word {
+  padding: 15px;
+  color: white;
+}
+
+/* Griglia delle aste */
+.auction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.auction-item {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.auction-item h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  word-break: break-word;
+}
+
+.auction-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+.auction-item h3,
+.auction-item p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.auction-item h3 {
+  -webkit-line-clamp: 2; /* Limita i titoli a 2 righe */
+}
+
+.auction-item p {
+  -webkit-line-clamp: 4; /* Limita i paragrafi a 4 righe */
+}
+
+/* Pulsante Bid */
+.bid-button {
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  align-self: flex-end; /* Allinea il pulsante a destra */
+  margin-top: 10px; /* Spazio sopra il pulsante */
+}
+
+.bid-button:hover {
+  background-color: #0056b3;
+}
+
+/* Stato dell'asta scaduta */
+.expired {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Sfondo trasparente scuro */
+  z-index: 9999;
+  backdrop-filter: blur(10px); /* Effetto sfocatura */
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: red;
+}
+
+.modal-content form {
+  margin-top: 20px;
+}
+
+.modal-content input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-content .bid-submit-button {
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content .bid-submit-button:hover {
+  background-color: #0056b3;
+}
+
+.modal-content .error-message {
+  margin-top: 10px;
+}
+
+.bid-button {
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.bid-button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the bids history container */
+.bids-history {
+  margin-top: 20px; /* Spazio sopra il contenitore */
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Colore di sfondo leggermente diverso per distinguere */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 300px; /* Altezza massima per il contenitore */
+  overflow-y: auto; /* Aggiungi lo scroll se il contenuto supera l'altezza */
+}
+
+/* Griglia per le offerte */
+.bids-history-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr; /* Colonne per User, Amount, Date, Details */
+  gap: 10px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+/* Header della griglia */
+.bids-header {
+  font-weight: bold;
+  text-align: left;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Elementi della griglia */
+.bid-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bid-item:last-child {
+  border-bottom: none; /* Rimuovi il bordo per l'ultimo elemento */
+}
+
+/* Pulsante Details */
+.details-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+}
+
+/* Personalizzazione dello scroll */
+.bids-history::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bids-history::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.bids-history::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.bids-history::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Styling for the Bid Details Modal */
+#bidDetailsModal .modal-content {
+  max-width: 500px;
+}
+
+#bidDetailsContent {
+  text-align: left;
+  padding: 10px;
+}
+
+#bidDetailsContent p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Media Queries per adattamento su schermi piccoli */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .main-nav a {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .auction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auction-item {
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .modal-content {
+    max-width: 90%;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .search-container label {
+    margin-bottom: 10px;
+  }
+}
